@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Online Shopping Mall</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #444;
+            padding: 10px;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .product-list, .cart-list, .review-list, .order-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .product, .cart-item, .review-item, .order-item {
+            background-color: white;
+            border: 1px solid #ccc;
+            margin: 10px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .product img, .cart-item img, .order-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product h3, .cart-item h3, .order-item h3 {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        .product p, .cart-item p, .review-item p, .order-item p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .add-to-cart, .remove-from-cart, .place-order {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .remove-from-cart {
+            background-color: #f44336;
+        }
+
+        .checkout-button, .filter-button {
+            background-color: #000;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            display: block;
+            margin: 20px auto;
+        }
+
+        .review-list, .order-list {
+            margin-top: 50px;
+        }
+
+        .review-item, .order-item {
+            background-color: #fff;
+            padding: 20px;
+            margin: 10px;
+            width: 45%;
+            border: 1px solid #ddd;
+        }
+
+        .review-item h4, .order-item h4 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .review-item p, .order-item p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .search-bar input {
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .category-filter button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 0 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .discount-banner {
+            background-color: #ff5722;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .signup-form, .login-form {
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            max-width: 400px;
+            margin: 20px auto;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .signup-form input, .login-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+        }
+
+        .signup-form button, .login-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to the Advanced Online Shopping Mall</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Shop</a>
+        <a href="#">Cart</a>
+        <a href="#">Order History</a>
+        <a href="#">Login</a>
+        <a href="#">Signup</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <!-- 검색 기능 -->
+    <div class="search-bar">
+        <input type="text" placeholder="Search for products..." />
+        <button>Search</button>
+    </div>
+
+    <!-- 카테고리 필터 -->
+    <div class="category-filter">
+        <button>All Categories</button>
+        <button>Electronics</button>
+        <button>Clothing</button>
+        <button>Accessories</button>
+        <button>Home & Kitchen</button>
+    </div>
+
+    <!-- 할인 배너 -->
+    <div class="discount-banner">
+        <h2>Special Discount! Get up to 50% off on select items!</h2>
+    </div>
+
+    <section class="product-section">
+        <h2>Available Products</h2>
+        <div class="product-list">
+            <!-- 상품 리스트 타임리프 표현 -->
+            <div th:each="product : ${products}" class="product">
+                <img th:src="@{/images/product.png}" alt="Product Image">
+                <h3 th:text="${product.name}">Product Name</h3>
+                <p th:text="${product.description}">This is a product description.</p>
+                <p><strong>Price: $</strong><span th:text="${product.price}">100.00</span></p>
+                <button class="add-to-cart" th:onclick="'addToCart(' + ${product.id} + ')'">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="cart-section">
+        <h2>Your Shopping Cart</h2>
+        <div class="cart-list">
+            <!-- 장바구니 아이템 타임리프 표현 -->
+            <div th:each="cartItem : ${cartItems}" class="cart-item">
+                <img th:src="@{/images/cart-item.png}" alt="Cart Item Image">
+                <h3 th:text="${cartItem.name}">Cart Item Name</h3>
+                <p th:text="${cartItem.description}">Cart item description</p>
+                <p><strong>Quantity:</strong> <span th:text="${cartItem.quantity}">1</span></p>
+                <p><strong>Total Price: $</strong><span th:text="${cartItem.totalPrice}">150.00</span></p>
+                <button class="remove-from-cart" th:onclick="'removeFromCart(' + ${cartItem.id} + ')'">Remove</button>
+            </div>
+        </div>
+        <button class="checkout-button">Proceed to Checkout</button>
+    </section>
+
+    <section class="review-section">
+        <h2>Customer Reviews</h2>
+        <div class="review-list">
+            <!-- 리뷰 리스트 타임리프 표현 -->
+            <div th:each="review : ${reviews}" class="review-item">
+                <h4 th:text="${review.user}">User Name</h4>
+                <p th:text="${review.content}">This product is great! I really loved it.</p>
+                <p><strong>Rating:</strong> <span th:text="${review.rating}">5</span> / 5</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="order-section">
+        <h2>Your Order History</h2>
+        <div class="order-list">
+            <!-- 주문 내역 타임리프 표현 -->
+            <div th:each="order : ${orders}" class="order-item">
+                <h4 th:text="'Order ID: ' + ${order.id}">Order ID</h4>
+                <p><strong>Date:</strong> <span th:text="${order.date}">2024-01-01</span></p>
+                <p><strong>Total Amount: $</strong><span th:text="${order.totalAmount}">200.00</span></p>
+                <button class="place-order" th:onclick="'viewOrderDetails(' + ${order.id} + ')'">View Details</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 회원가입 폼 -->
+    <section class="signup-section">
+        <h2>Sign Up</h2>
+        <form class="signup-form">
+            <input type="text" placeholder="Username" required />
+            <input type="email" placeholder="Email" required />
+            <input type="password" placeholder="Password" required />
+            <button type="submit">Create Account</button>
+        </form>
+    </section>
+
+    <!-- 로그인 폼 -->
+    <section class="login-section">
+        <h2>Login</h2>
+        <form class="login-form">
+            <input type="text" placeholder="Username or Email" required />
+            <input type="password" placeholder="Password" required />
+            <button type="submit">Login</button>
+        </form>
+    </section>
+
+</div>
+
+<footer>
+    <p>&copy; 2024 Advanced Online Shopping Mall. All rights reserved.</p>
+</footer>
+
+<script>
+    function addToCart(productId) {
+        // 상품을 장바구니에 추가하는 로직
+        alert('Product ' + productId + ' added to cart.');
+    }
+
+    function removeFromCart(cartItemId) {
+        // 장바구니에서 상품을 제거하는 로직
+        alert('Cart item ' + cartItemId + ' removed.');
+    }
+
+    function viewOrderDetails(orderId) {
+        // 주문 상세보기 로직
+        alert('Viewing details for Order ID: ' + orderId);
+    }
+</script>
+
+</body>
+</html>
